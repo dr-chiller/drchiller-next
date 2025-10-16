@@ -1,0 +1,9 @@
+# Allow all crawlers access to the site
+User-agent: *
+Disallow:
+
+# Link to sitemap
+Sitemap: https://www.drchiller.com/sitemap.xml
+
+# Optional: Crawl delay for bots (seconds)
+# Crawl-delay: 10
