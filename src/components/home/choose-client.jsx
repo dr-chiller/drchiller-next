@@ -1,12 +1,12 @@
+// components/HomeChooseClient.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FaAward, FaUsers, FaCogs, FaClock } from "react-icons/fa";
+import { Snowflake } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Snowflake } from "lucide-react";
 
-export default function HomeChoose() {
+export default function HomeChooseClient({ reasons }) {
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -25,6 +25,7 @@ export default function HomeChoose() {
             ref={sectionRef}
             className="relative py-16 pb-28 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-950 transition-colors duration-300 overflow-hidden"
         >
+            {/* Animated Snowflakes */}
             <Snowflake
                 size={140}
                 className="absolute -top-2 -left-2 md:top-0 md:left-2 text-emerald-500/10 animate-spin-slow pointer-events-none select-none"
@@ -38,12 +39,15 @@ export default function HomeChoose() {
             <div
                 className={`max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center 
           transform transition-all duration-1000 ease-out
-          ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-90"}`}
+          ${isVisible
+                        ? "opacity-100 translate-y-0 scale-100"
+                        : "opacity-0 translate-y-10 scale-90"
+                    }`}
             >
                 {/* Left Side - Images */}
                 <div className="relative flex flex-col items-center lg:block lg:ms-12 sm:mb-12">
                     <div
-                        className={`hidden sm:block relative w-72 h-80 rounded-xl shadow-lg border-2 border-white dark:border-gray-900 transform sm:rotate-[-3deg]
+                        className={`hidden sm:block relative w-72 h-80 rounded-xl shadow-lg border-2 border-white dark:border-gray-900 overflow-hidden sm:rotate-[-3deg]
               transition-all duration-1000 ease-out
               ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}`}
                     >
@@ -52,22 +56,24 @@ export default function HomeChoose() {
                             alt="Our Team"
                             fill
                             className="object-cover rounded-xl"
-                            priority
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </div>
 
                     <div
-                        className={`relative w-64 h-72 rounded-xl shadow-lg border-2 border-white dark:border-gray-900 transform sm:rotate-[12deg] 
-                       sm:absolute sm:top-20 sm:left-20 lg:top-20 lg:left-40
-                       transition-all duration-1000 delay-200 ease-out
-                       ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}`}
+                        className={`relative w-64 h-72 rounded-xl shadow-lg border-2 border-white dark:border-gray-900 overflow-hidden sm:rotate-[12deg] 
+              sm:absolute sm:top-20 sm:left-20 lg:top-20 lg:left-40
+              transition-all duration-1000 delay-200 ease-out
+              ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}`}
                     >
                         <Image
                             src="/about2.webp"
                             alt="Work in Action"
                             fill
                             className="object-cover rounded-xl"
-                            priority
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </div>
                 </div>
@@ -75,7 +81,8 @@ export default function HomeChoose() {
                 {/* Right Side - Text & Reasons */}
                 <div
                     className={`relative transition-all duration-1000 delay-400 ease-out
-            ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}
+            ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+                        }`}
                 >
                     <h2 className="text-3xl sm:text-4xl font-bold text-emerald-600 dark:text-emerald-400 mb-6">
                         Why Choose Us
@@ -92,12 +99,7 @@ export default function HomeChoose() {
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                        {[
-                            { icon: <FaAward />, title: "Proven Expertise" },
-                            { icon: <FaUsers />, title: "Dedicated Support" },
-                            { icon: <FaCogs />, title: "Cutting-Edge Solutions" },
-                            { icon: <FaClock />, title: "On-Time Delivery" },
-                        ].map((item, index) => (
+                        {reasons.map((item, index) => (
                             <div
                                 key={index}
                                 className="flex items-center space-x-3 group transition-transform duration-300 hover:translate-x-1"

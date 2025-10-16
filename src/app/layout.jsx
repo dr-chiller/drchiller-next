@@ -1,10 +1,10 @@
-// app/layout.tsx
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import ClientWrapper from "@/components/client-wrapper";
 import FloatingActions from "@/components/contact-buttons";
+import Script from "next/script";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -42,26 +42,35 @@ export const metadata = {
   metadataBase: new URL("https://drchiller.com"),
 };
 
-export default function RootLayout({ children}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        {/* Google Fonts are handled by next/font, no need to include <link> */}
+      <body className={`${montserrat.variable} antialiased`}>
+        <Navbar />
+        <ClientWrapper />
+        {children}
+        <FloatingActions />
+        <Footer />
+
         {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-27JXZLQEQ4"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-27JXZLQEQ4');
-            `,
-          }}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-27JXZLQEQ4"
+          strategy="afterInteractive"
         />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-27JXZLQEQ4');
+          `}
+        </Script>
+
         {/* Structured Data */}
-        <script
+        <Script
+          id="structured-data"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -83,13 +92,6 @@ export default function RootLayout({ children}) {
             }),
           }}
         />
-      </head>
-      <body className={`${montserrat.variable} antialiased`}>
-        <Navbar />
-        <ClientWrapper />
-        {children}
-        <FloatingActions />
-        <Footer />
       </body>
     </html>
   );
