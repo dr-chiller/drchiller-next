@@ -23,7 +23,7 @@ export default function HomeHeroClient({ slides }) {
     }, [slides.length]);
 
     return (
-        <div ref={sectionRef} className="relative h-screen overflow-hidden">
+        <div ref={sectionRef} className="relative h-[80vh] sm:h-screen overflow-hidden">
             {/* background crossfade */}
             <div className="absolute inset-0 w-screen h-screen">
                 {slides.map((slide, index) => (
@@ -60,10 +60,10 @@ export default function HomeHeroClient({ slides }) {
                                 alt="Dr.Chiller Logo"
                             />
                             <div>
-                                <h4 className="text-xl md:text-2xl font-bold">
+                                <h4 className="text-lg sm:text-xl md:text-2xl font-bold">
                                     CTS - Chiller Technical Services L.L.C
                                 </h4>
-                                <span className="text-sm italic md:text-md font-semibold text-emerald-400 uppercase">
+                                <span className="text-xs sm:text-sm italic md:text-md font-semibold text-emerald-400 uppercase">
                                     Skill to Chill
                                 </span>
                             </div>

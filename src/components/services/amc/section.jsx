@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { Wrench, ShieldCheck, Repeat2 } from "lucide-react";
+import ServiceCard from "@/components/services/service-card";
 
 import amc_1 from "@/assets/services/amc-contract.webp";
 import amc_2 from "@/assets/services/amc-multi-sector.webp";
@@ -87,7 +87,7 @@ const amcServices = [
     },
 ];
 
-const AMCSections = () => {
+export default function AMCSections() {
     return (
         <section className="py-12 bg-gray-100 dark:bg-gray-950 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,43 +97,10 @@ const AMCSections = () => {
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {amcServices.map((item, idx) => (
-                        <div
-                            id={item.id ? item.id : ""}
-                            key={idx}
-                            className="group bg-white dark:bg-gray-900 rounded-xl border border-transparent dark:border-gray-800
-                p-3 shadow hover:shadow-lg hover:border-emerald-500/60 dark:hover:border-emerald-500/80 transition-all"
-                        >
-                            {/* Image */}
-                            <div className="relative w-full h-36 mb-4 overflow-hidden rounded-md group-hover:scale-105 transition-transform duration-500">
-                                <Image src={item.image} alt={item.title} className="object-cover" />
-                            </div>
-
-                            {/* Title / Icon */}
-                            <div className="flex items-center gap-3 mb-4 text-emerald-600 dark:text-emerald-400">
-                                {item.icon}
-                                <span className="text-lg font-semibold">{item.title}</span>
-                            </div>
-
-                            {/* Description */}
-                            <p className="text-base mb-3 text-gray-700 dark:text-gray-300">
-                                {item.blurb}
-                            </p>
-
-                            {/* Bullets */}
-                            <ul className="space-y-1 text-gray-700 dark:text-gray-300 text-base">
-                                {item.bullets.map((b, i) => (
-                                    <li key={i} className="flex items-start gap-2">
-                                        <span className="text-emerald-500">❄</span>
-                                        <span>{b}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <ServiceCard key={idx} item={item} />
                     ))}
                 </div>
             </div>
         </section>
     );
-};
-
-export default AMCSections;
+}

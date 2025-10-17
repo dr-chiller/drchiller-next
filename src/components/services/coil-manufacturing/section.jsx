@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { Wrench, Droplets, ShieldCheck, Repeat2 } from "lucide-react";
+import ServiceCard from "@/components/services/service-card";
 
 import coil_replace from "@/assets/services/coil-replacement.webp";
 import anti_corrosion from "@/assets/services/coil-anti-corrosion-coating.webp";
@@ -98,43 +98,7 @@ export default function CoilManufacturingSections() {
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {coilServices.map((item, i) => (
-                        <div
-                            id={item.id ? item.id : ""}
-                            key={i}
-                            className="group bg-white dark:bg-gray-900 rounded-xl border border-transparent dark:border-gray-800
-              p-3 shadow hover:shadow-lg hover:border-emerald-500/60 dark:hover:border-emerald-500/80 transition-all"
-                        >
-                            {/* Image */}
-                            <div className="relative w-full h-36 rounded-md overflow-hidden mb-4">
-                                <Image
-                                    src={item.image}
-                                    alt={item.title}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    sizes="(max-width: 768px) 100vw, 33vw"
-                                    priority={i < 2}
-                                />
-                            </div>
-
-                            {/* Title / Icon */}
-                            <div className="flex items-center gap-3 mb-4 text-emerald-600 dark:text-emerald-400">
-                                {item.icon}
-                                <span className="text-lg font-semibold">{item.title}</span>
-                            </div>
-
-                            {/* Description */}
-                            <p className="text-base mb-3 text-gray-700 dark:text-gray-300">{item.blurb}</p>
-
-                            {/* Bullets */}
-                            <ul className="space-y-1 text-gray-700 dark:text-gray-300 text-base">
-                                {item.bullets.map((b, idx) => (
-                                    <li key={idx} className="flex items-start gap-2">
-                                        <span className="text-emerald-500">❄</span>
-                                        <span>{b}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <ServiceCard key={i} item={item} />
                     ))}
                 </div>
             </div>

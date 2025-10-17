@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ProductCard from "@/components/products/product-card";
 import { Fan, Wrench, RefreshCcw, Settings2 } from "lucide-react";
 
 import ac1 from "@/assets/products/ac-units.webp";
@@ -70,42 +70,8 @@ const ACUnitsSections = () => {
                 </h2>
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {acUnitProducts.map((p, i) => (
-                        <article
-                            id={p.id ?? ""}
-                            key={i}
-                            className="group bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-emerald-500/50 dark:hover:border-emerald-500/80"
-                        >
-                            {/* Image */}
-                            <div className="h-48 overflow-hidden relative">
-                                <Image
-                                    src={p.image}
-                                    alt={p.title}
-                                    fill
-                                    style={{ objectFit: "cover" }}
-                                    className="transition-transform duration-500 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
-                            </div>
-
-                            {/* Body */}
-                            <div className="px-6 pb-2 pt-4 flex flex-col">
-                                <div className="flex items-center gap-3 mb-2 text-emerald-600 dark:text-emerald-400">
-                                    {p.icon}
-                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                                        {p.title}
-                                    </h3>
-                                </div>
-
-                                <p className="text-gray-700 dark:text-gray-300 mb-4 mt-1">{p.blurb}</p>
-
-                                <ul className="space-y-2 text-base text-gray-600 dark:text-gray-300 mb-6 list-disc ps-5">
-                                    {p.bullets.map((b, idx) => (
-                                        <li key={idx}>{b}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </article>
+                    {acUnitProducts.map((product, i) => (
+                        <ProductCard key={i} product={product} />
                     ))}
                 </div>
             </div>

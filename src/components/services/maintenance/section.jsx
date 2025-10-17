@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ServiceCard from "@/components/services/service-card";
 import { Wrench, RefreshCcw, ShieldCheck, Cog, Droplets, Zap } from "lucide-react";
 
 import maintenance_installation from "@/assets/services/maintenance-installation.webp";
@@ -16,10 +16,7 @@ const maintenanceServices = [
         image: maintenance_installation,
         icon: <Wrench size={30} />,
         blurb: "Professional installation and commissioning of AC, chillers and cold room units.",
-        bullets: [
-            "Cold room AC systems",
-            "Industrial chillers (new & refurbished)",
-        ],
+        bullets: ["Cold room AC systems", "Industrial chillers (new & refurbished)"],
     },
     {
         title: "Spare Parts Replacement",
@@ -41,10 +38,7 @@ const maintenanceServices = [
         icon: <Cog size={30} />,
         id: "duct-cleaning",
         blurb: "Thorough duct cleaning to improve air quality and airflow.",
-        bullets: [
-            "Removal of dust & microbial growth",
-            "Improves airflow performance",
-        ],
+        bullets: ["Removal of dust & microbial growth", "Improves airflow performance"],
     },
     {
         title: "Electric Panel Rewiring",
@@ -52,10 +46,7 @@ const maintenanceServices = [
         icon: <Zap size={30} />,
         id: "electric-panel",
         blurb: "Repair and rewiring of electrical control panels for safe operation.",
-        bullets: [
-            "Control panel overhauling",
-            "Wiring upgrades & safety checks",
-        ],
+        bullets: ["Control panel overhauling", "Wiring upgrades & safety checks"],
     },
     {
         title: "Gas Leak Arresting & Water Servicing",
@@ -63,10 +54,7 @@ const maintenanceServices = [
         icon: <Droplets size={30} />,
         id: "gas-leak-arresting",
         blurb: "Complete refrigerant leak detection and water servicing of systems.",
-        bullets: [
-            "Leak detection & refrigerant recharge",
-            "Full water service of condensing units",
-        ],
+        bullets: ["Leak detection & refrigerant recharge", "Full water service of condensing units"],
     },
 ];
 
@@ -79,45 +67,8 @@ export default function MaintenanceSections() {
                 </h2>
 
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {maintenanceServices.map((s, i) => (
-                        <div
-                            id={s.id ? s.id : ""}
-                            key={i}
-                            className="group bg-white dark:bg-gray-900 rounded-xl p-3 border border-transparent dark:border-gray-800
-              overflow-hidden shadow hover:shadow-lg hover:border-emerald-500/50 dark:hover:border-emerald-500/80
-              transition-all"
-                        >
-                            <div className="relative h-32 w-full rounded-xl overflow-hidden">
-                                <Image
-                                    src={s.image}
-                                    alt={s.title}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                    sizes="(max-width: 768px) 100vw, 33vw"
-                                    priority={i < 2}
-                                />
-                            </div>
-
-                            <div className="p-5">
-                                <div className="flex items-center gap-3 mb-2 text-emerald-600 dark:text-emerald-400">
-                                    {s.icon}
-                                    <h3 className="font-semibold">{s.title}</h3>
-                                </div>
-
-                                <p className="text-base mb-3 text-gray-700 dark:text-gray-300">
-                                    {s.blurb}
-                                </p>
-
-                                <ul className="space-y-1 text-gray-700 dark:text-gray-300 text-base">
-                                    {s.bullets.map((b, idx) => (
-                                        <li key={idx} className="flex items-start gap-2">
-                                            <span className="text-emerald-500">❄</span>
-                                            {b}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
+                    {maintenanceServices.map((item, i) => (
+                        <ServiceCard key={i} item={item} />
                     ))}
                 </div>
             </div>
