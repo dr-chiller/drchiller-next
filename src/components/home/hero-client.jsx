@@ -87,7 +87,7 @@ export default function HomeHeroClient({ slides }) {
                 </AnimatePresence>
 
                 {/* Desktop list */}
-                <div className="hidden md:flex md:w-3/10 h-full flex-col justify-end space-y-3 p-4">
+                <nav className="hidden md:flex md:w-3/10 h-full flex-col justify-end space-y-3 p-4">
                     <div className="backdrop-blur rounded-lg p-3 pt-4 max-h-full">
                         {slides.map((slide, index) => (
                             <button
@@ -102,7 +102,7 @@ export default function HomeHeroClient({ slides }) {
                             </button>
                         ))}
                     </div>
-                </div>
+                </nav>
 
                 {/* Mobile buttons */}
                 <div className="md:hidden absolute bottom-2 w-full px-4 flex gap-2 overflow-x-auto no-scrollbar">

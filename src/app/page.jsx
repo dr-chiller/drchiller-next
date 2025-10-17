@@ -1,9 +1,12 @@
-import HomeChoose from "@/components/home/choose-server";
-import HomeHero from "@/components/home/hero-server";
-import HomeOffers from "@/components/home/offer";
-import HomeProducts from "@/components/home/products";
-import HomeRentals from "@/components/home/rentals";
-import HomeServices from "@/components/home/services";
+import dynamic from "next/dynamic";
+
+const HomeHero = dynamic(() => import("@/components/home/hero-server"), { ssr: true });
+const HomeChoose = dynamic(() => import("@/components/home/choose-server"));
+const HomeOffers = dynamic(() => import("@/components/home/offer"));
+const HomeProducts = dynamic(() => import("@/components/home/products"));
+const HomeServices = dynamic(() => import("@/components/home/services"));
+const HomeRentals = dynamic(() => import("@/components/home/rentals"));
+
 
 export default function Home() {
   return (
