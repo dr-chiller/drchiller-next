@@ -84,8 +84,7 @@ export default function HomeProducts() {
                                 <Image
                                     src={product.image}
                                     alt={product.name}
-                                    width={300}
-                                    height={200}
+                                    fill
                                     className="object-cover"
                                     sizes="(max-width: 1024px) 100vw, 25vw"
                                 />
