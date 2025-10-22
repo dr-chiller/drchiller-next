@@ -99,18 +99,18 @@ const Navbar = () => {
     const menuItems = {
         products: [
             { label: "All Products", path: "/products" },
-            { label: "Water Chillers, Coolers & Heat Pumps", path: "/products/water-chillers" },
-            { label: "Cold Rooms & Ice Block Machines", path: "/products/cold-rooms" },
-            { label: "Heat Exchangers & Cooling Towers", path: "/products/heat-exchangers" },
-            { label: "A/C Units & Air Curtains", path: "/products/ac-units" },
+            { label: "Water Chillers, Coolers & Heat Pumps", path: "/products/water-chillers-coolers-heat-pumps" },
+            { label: "Cold Rooms & Ice Block Machines", path: "/products/cold-rooms-ice-block-machines" },
+            { label: "Heat Exchangers & Cooling Towers", path: "/products/heat-exchangers-cooling-towers" },
+            { label: "A/C Units & Air Curtains", path: "/products/ac-units-air-curtains" },
         ],
         services: [
             { label: "All Services", path: "/services" },
-            { label: "A/C, Chiller & Genset Rentals", path: "/services/rentals" },
-            { label: "Chilled Water Pipeline & Flushing", path: "/services/pipeline" },
-            { label: "A/C, Chiller & Cold Room Maintenance", path: "/services/maintenance" },
-            { label: "Coil Manufacturing & Replacement", path: "/services/coil" },
-            { label: "Overhauling & Winding", path: "/services/overhauling" },
+            { label: "A/C, Chiller & Genset Rentals", path: "/services/ac-chiller-genset-rentals" },
+            { label: "Chilled Water Pipeline & Flushing", path: "/services/chilled-water-pipeline-flushing" },
+            { label: "A/C, Chiller & Cold Room Maintenance", path: "/services/ac-chiller-coldroom-maintenance" },
+            { label: "Coil Manufacturing & Replacement", path: "/services/coil-manufacturing-replacements" },
+            { label: "Overhauling & Winding", path: "/services/overhauling-winding" },
             { label: "AMC", path: "/services/amc" },
         ],
     };

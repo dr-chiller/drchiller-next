@@ -14,27 +14,27 @@ const allServices = [
     {
         name: "A/C, Chiller & Genset Rentals",
         image: rentalImg,
-        link: "/services/rentals",
+        link: "/services/ac-chiller-genset-rentals",
     },
     {
         name: "Chilled Water Pipeline & Flushing",
         image: chilledWaterImg,
-        link: "/services/pipeline",
+        link: "/services/chilled-water-pipeline-flushing",
     },
     {
         name: "A/C, Chiller & Coldroom Maintenance",
         image: maintenanceImg,
-        link: "/services/maintenance",
+        link: "/services/ac-chiller-coldroom-maintenance",
     },
     {
         name: "Coil Manufacturing & Replacements",
         image: coilImg,
-        link: "/services/coil",
+        link: "/services/coil-manufacturing-replacements",
     },
     {
         name: "Overhauling & Winding",
         image: overhaulingImg,
-        link: "/services/overhauling",
+        link: "/services/overhauling-winding",
     },
     {
         name: "AMC",

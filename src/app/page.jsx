@@ -1,3 +1,4 @@
+import HomeBlogs from "@/components/home/blogs";
 import dynamic from "next/dynamic";
 
 const HomeHero = dynamic(() => import("@/components/home/hero-server"), { ssr: true });
@@ -17,6 +18,7 @@ export default function Home() {
       <HomeProducts />
       <HomeServices />
       <HomeRentals />
+      <HomeBlogs />
     </div>
   );
 }

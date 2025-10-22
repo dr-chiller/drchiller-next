@@ -34,10 +34,10 @@ const Footer = () => {
                     <h3 className="text-lg font-bold text-emerald-500 mb-4">Products</h3>
                     <ul className="space-y-2 text-sm">
                         {[
-                            { name: "Water Chillers, Coolers & Heat Pumps", link: "/products/water-chillers" },
-                            { name: "Cold Rooms & Ice Block Machines", link: "/products/cold-rooms" },
-                            { name: "Heat Exchangers & Cooling Towers", link: "/products/heat-exchangers" },
-                            { name: "A/C Units & Air Curtains", link: "/products/ac-units" },
+                            { name: "Water Chillers, Coolers & Heat Pumps", link: "/products/water-chillers-coolers-heat-pumps" },
+                            { name: "Cold Rooms & Ice Block Machines", link: "/products/cold-rooms-ice-block-machines" },
+                            { name: "Heat Exchangers & Cooling Towers", link: "/products/heat-exchangers-cooling-towers" },
+                            { name: "A/C Units & Air Curtains", link: "/products/ac-units-air-curtains" },
                         ].map((item, i) => (
                             <li key={i}>
                                 <Link href={item.link} className="hover:text-emerald-500 relative group">
@@ -54,11 +54,11 @@ const Footer = () => {
                     <h3 className="text-lg font-bold text-emerald-500 mb-4">Services</h3>
                     <ul className="space-y-2 text-sm">
                         {[
-                            { name: "A/C, Chiller & Genset Rentals", link: "/services/rentals" },
-                            { name: "Chilled Water Pipeline & Flushing", link: "/services/pipeline" },
-                            { name: "A/C, Chiller & Coldroom Maintenance", link: "/services/maintenance" },
-                            { name: "Coil Manufacturig & Replacements", link: "/services/coil" },
-                            { name: "Overhauling & Winding", link: "/services/overhauling" },
+                            { name: "A/C, Chiller & Genset Rentals", link: "/services/ac-chiller-genset-rentals" },
+                            { name: "Chilled Water Pipeline & Flushing", link: "/services/chilled-water-pipeline-flushing" },
+                            { name: "A/C, Chiller & Coldroom Maintenance", link: "/services/ac-chiller-coldroom-maintenance" },
+                            { name: "Coil Manufacturig & Replacements", link: "/services/coil-manufacturing-replacements" },
+                            { name: "Overhauling & Winding", link: "/services/overhauling-winding" },
                             { name: "AMC", link: "/services/amc" },
                         ].map((item, i) => (
                             <li key={i}>
@@ -124,7 +124,7 @@ const Footer = () => {
                 <span className="text-gray-400 text-[0.7rem]">
                     Developed by{" "}
                     <a
-                        href="https://wizaura.vercel.app"
+                        href="https://wizaura.co"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-medium text-emerald-700 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-500"

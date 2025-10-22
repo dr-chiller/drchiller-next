@@ -9,10 +9,10 @@ import he from "@/assets/products/heat-exchangers-1.webp";
 import ac from "@/assets/products/ac-units-2.webp";
 
 const allProducts = [
-    { name: "Water Chillers, Coolers & Heat Pumps",value: "Water Chillers", link: "/products/water-chillers", image: wc },
-    { name: "Cold Rooms & Ice Block Machines",value: "Cold Rooms", link: "/products/cold-rooms", image: cr },
-    { name: "Heat Exchangers & Cooling Towers",value: "Heat Exchangers", link: "/products/heat-exchangers", image: he },
-    { name: "A/C Units & Air Curtains",value: "A/C Units", link: "/products/ac-units", image: ac }
+    { name: "Water Chillers, Coolers & Heat Pumps",value: "Water Chillers", link: "/products/water-chillers-coolers-heat-pumps", image: wc },
+    { name: "Cold Rooms & Ice Block Machines",value: "Cold Rooms", link: "/products/cold-rooms-ice-block-machines", image: cr },
+    { name: "Heat Exchangers & Cooling Towers",value: "Heat Exchangers", link: "/products/heat-exchangers-cooling-towers", image: he },
+    { name: "A/C Units & Air Curtains",value: "A/C Units", link: "/products/ac-units-air-curtains", image: ac }
 ];
 
 const RelatedProducts = ({ current }) => {
