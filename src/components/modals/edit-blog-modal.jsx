@@ -39,32 +39,29 @@ export default function EditBlogModal({ blog, onClose, onSave }) {
             let imagePath = currentImagePath;
 
             if (newImageFile) {
-                if (!currentImagePath) {
-                    imagePath = `${blog.id}_${newImageFile.name}`;
-                } else {
-                    // Delete old image first
+                if (currentImagePath) {
                     const { error: removeError } = await supabase.storage
                         .from("blog-images")
                         .remove([currentImagePath]);
                     if (removeError) console.warn("Failed to delete old image:", removeError.message);
                 }
 
-                // Upload new image to the same path
+                const newPath = `blog_${Date.now()}_${newImageFile.name}`;
+
                 const { error: uploadError } = await supabase.storage
                     .from("blog-images")
-                    .upload(imagePath, newImageFile, { upsert: true });
+                    .upload(newPath, newImageFile);
 
                 if (uploadError) throw uploadError;
 
-                // Get public URL
                 const { data: publicUrlData } = supabase.storage
                     .from("blog-images")
-                    .getPublicUrl(imagePath);
+                    .getPublicUrl(newPath);
 
                 imageUrl = publicUrlData.publicUrl;
+                imagePath = newPath;
             }
 
-            // Update blog in DB
             const { data: updatedData, error: updateError } = await supabase
                 .from("blogs")
                 .update({

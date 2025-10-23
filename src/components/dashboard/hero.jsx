@@ -9,6 +9,7 @@ import ViewBlogModal from "../modals/view-blog-modal";
 import Image from "next/image";
 import { FaEdit, FaEye, FaPlus, FaSignOutAlt, FaTrash } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import Pagination from "@/components/pagination";
 
 export default function DashboardHero() {
     const [blogs, setBlogs] = useState([]);
@@ -19,19 +20,17 @@ export default function DashboardHero() {
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [isViewModalOpen, setViewModalOpen] = useState(false);
 
-    const router = useRouter();
+    const [currentPage, setCurrentPage] = useState(1);
+    const blogsPerPage = 12;
 
+    const router = useRouter();
 
     const handleLogout = async () => {
         const { error } = await supabase.auth.signOut();
-        if (error) {
-            console.error("Error logging out:", error);
-        } else {
-            router.push("/");
-        }
+        if (error) console.error("Error logging out:", error);
+        else router.push("/");
     };
 
-    // Fetch blogs from Supabase
     const fetchBlogs = async () => {
         setLoading(true);
         const { data, error } = await supabase
@@ -47,6 +46,12 @@ export default function DashboardHero() {
         fetchBlogs();
     }, []);
 
+    // Calculate pagination
+    const totalPages = Math.ceil(blogs.length / blogsPerPage);
+    const indexOfLastBlog = currentPage * blogsPerPage;
+    const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+    const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+
     return (
         <div className="px-6 sm:px-10 lg:px-16 py-10">
             {/* Header */}
@@ -55,7 +60,6 @@ export default function DashboardHero() {
                     Blogs
                 </h2>
                 <div className="flex gap-1 sm:gap-3">
-                    {/* Add Blog Button */}
                     <button
                         onClick={() => setAddModalOpen(true)}
                         className="flex items-center gap-2 cursor-pointer bg-emerald-500 text-white px-2 md:px-5 py-2 rounded-lg shadow-md hover:bg-emerald-600 transition"
@@ -63,8 +67,6 @@ export default function DashboardHero() {
                         <FaPlus className="text-sm" />
                         Add Blog
                     </button>
-
-                    {/* Logout Button */}
                     <button
                         onClick={handleLogout}
                         className="flex items-center gap-2 cursor-pointer bg-red-500 text-white px-2 md:px-5 py-2 rounded-lg shadow-md hover:bg-red-600 transition"
@@ -81,80 +83,87 @@ export default function DashboardHero() {
             ) : blogs.length === 0 ? (
                 <p className="text-gray-500 text-center">No blogs available.</p>
             ) : (
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {blogs.map((blog) => (
-                        <div
-                            key={blog.id}
-                            className="bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-lg shadow hover:shadow-lg transition p-2 flex flex-col"
-                        >
-                            {blog.image_url ? (
-                                <div className="relative w-full h-48 mb-4">
-                                    <Image
-                                        src={blog.image_url}
-                                        alt={blog.title}
-                                        fill
-                                        className="object-cover rounded-md"
-                                    />
+                <>
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {currentBlogs.map((blog) => (
+                            <div
+                                key={blog.id}
+                                className="bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-lg shadow hover:shadow-lg transition p-2 flex flex-col"
+                            >
+                                {blog.image_url ? (
+                                    <div className="relative w-full h-48 mb-4">
+                                        <Image
+                                            src={blog.image_url}
+                                            alt={blog.title}
+                                            fill
+                                            className="object-cover rounded-md"
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="w-full h-48 bg-gray-100 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400 text-sm">
+                                        No Image
+                                    </div>
+                                )}
+
+                                <h3 className="font-semibold text-lg mb-2 text-gray-800 dark:text-gray-100 truncate">
+                                    {blog.title}
+                                </h3>
+
+                                <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 flex-grow">
+                                    {blog.content}
+                                </p>
+
+                                <div className="flex justify-end gap-1 mt-4">
+                                    <button
+                                        onClick={() => {
+                                            setSelectedBlog(blog);
+                                            setViewModalOpen(true);
+                                        }}
+                                        className="flex items-center gap-2 cursor-pointer px-3 py-1.5 text-sm rounded-md bg-emerald-500 hover:bg-emerald-600 text-white transition"
+                                    >
+                                        <FaEye className="text-sm" />
+                                        View
+                                    </button>
+
+                                    <button
+                                        onClick={() => {
+                                            setSelectedBlog(blog);
+                                            setEditModalOpen(true);
+                                        }}
+                                        className="cursor-pointer flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-blue-500 text-white hover:bg-blue-600 transition"
+                                    >
+                                        <FaEdit className="text-sm" />
+                                        Edit
+                                    </button>
+
+                                    <button
+                                        onClick={() => {
+                                            setSelectedBlog(blog);
+                                            setDeleteModalOpen(true);
+                                        }}
+                                        className="cursor-pointer flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-red-500 text-white hover:bg-red-600 transition"
+                                    >
+                                        <FaTrash className="text-sm" />
+                                        Delete
+                                    </button>
                                 </div>
-                            ) : (
-                                <div className="w-full h-48 bg-gray-100 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center text-gray-400 text-sm">
-                                    No Image
-                                </div>
-                            )}
-
-                            <h3 className="font-semibold text-lg mb-2 text-gray-800 dark:text-gray-100 truncate">
-                                {blog.title}
-                            </h3>
-
-                            <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 flex-grow">
-                                {blog.content}
-                            </p>
-
-                            <div className="flex justify-end gap-1 mt-4">
-                                <button
-                                    onClick={() => {
-                                        setSelectedBlog(blog);
-                                        setViewModalOpen(true);
-                                    }}
-                                    className="flex items-center gap-2 cursor-pointer px-3 py-1.5 text-sm rounded-md bg-emerald-500 hover:bg-emerald-600 text-white transition"
-                                >
-                                    <FaEye className="text-sm" />
-                                    View
-                                </button>
-
-                                <button
-                                    onClick={() => {
-                                        setSelectedBlog(blog);
-                                        setEditModalOpen(true);
-                                    }}
-                                    className="cursor-pointer flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-blue-500 text-white hover:bg-blue-600 transition"
-                                >
-                                    <FaEdit className="text-sm" />
-                                    Edit
-                                </button>
-
-                                <button
-                                    onClick={() => {
-                                        setSelectedBlog(blog);
-                                        setDeleteModalOpen(true);
-                                    }}
-                                    className="cursor-pointer flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-red-500 text-white hover:bg-red-600 transition"
-                                >
-                                    <FaTrash className="text-sm" />
-                                    Delete
-                                </button>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+
+                    {/* Pagination */}
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={(page) => setCurrentPage(page)}
+                    />
+                </>
             )}
 
             {/* Modals */}
             {isAddModalOpen && (
                 <AddBlogModal
-                    onClose={() => {
-                        setAddModalOpen(false);
-                    }}
+                    onClose={() => setAddModalOpen(false)}
                     onSave={() => {
                         setAddModalOpen(false);
                         fetchBlogs();
@@ -165,9 +174,7 @@ export default function DashboardHero() {
             {isEditModalOpen && selectedBlog && (
                 <EditBlogModal
                     blog={selectedBlog}
-                    onClose={() => {
-                        setEditModalOpen(false);
-                    }}
+                    onClose={() => setEditModalOpen(false)}
                     onSave={() => {
                         setEditModalOpen(false);
                         fetchBlogs();
@@ -178,9 +185,7 @@ export default function DashboardHero() {
             {isDeleteModalOpen && selectedBlog && (
                 <DeleteBlogModal
                     blog={selectedBlog}
-                    onClose={() => {
-                        setDeleteModalOpen(false);
-                    }}
+                    onClose={() => setDeleteModalOpen(false)}
                     onSave={() => {
                         setDeleteModalOpen(false);
                         fetchBlogs();

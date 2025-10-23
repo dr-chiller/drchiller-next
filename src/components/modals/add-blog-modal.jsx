@@ -70,7 +70,7 @@ export default function AddBlogModal({ onClose, onSave }) {
         let fileName = "";
 
         if (imageFile) {
-            fileName = `${Date.now()}_${imageFile.name}`;
+            fileName = `blog_${Date.now()}_${imageFile.name}`;
             const { error: uploadError } = await supabase.storage
                 .from("blog-images")
                 .upload(fileName, imageFile);
