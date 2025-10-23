@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Upload, X } from "lucide-react";
 
-export default function AddBlogModal({ onClose }) {
+export default function AddBlogModal({ onClose, onSave }) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [imageFile, setImageFile] = useState(null);
@@ -67,9 +67,10 @@ export default function AddBlogModal({ onClose }) {
         setLoading(true);
         setError(null);
         let imageUrl = "";
+        let fileName = "";
 
         if (imageFile) {
-            const fileName = `${Date.now()}_${imageFile.name}`;
+            fileName = `${Date.now()}_${imageFile.name}`;
             const { error: uploadError } = await supabase.storage
                 .from("blog-images")
                 .upload(fileName, imageFile);
@@ -87,12 +88,22 @@ export default function AddBlogModal({ onClose }) {
             imageUrl = publicData.publicUrl;
         }
 
+        const generateSlug = (title) =>
+            title
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^_|_$/g, "");
+
+
+        const slug = generateSlug(title);
+
+
         const { error: insertError } = await supabase
             .from("blogs")
-            .insert([{ title, content, image_url: imageUrl, user_id: session.user.id }]);
+            .insert([{ title, content, image_url: imageUrl, user_id: session.user.id, image_path: fileName, slug }]);
 
         if (insertError) setError("Failed to add blog: " + insertError.message);
-        else onClose();
+        else onSave();
 
         setLoading(false);
     };
@@ -127,8 +138,8 @@ export default function AddBlogModal({ onClose }) {
                     onDrop={handleDrop}
                     onDragOver={(e) => e.preventDefault()}
                     className={`border-1 border-dashed bg-white dark:bg-black rounded-md p-4 text-center transition ${imagePreview
-                            ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30"
-                            : "border-gray-400 dark:border-gray-700 hover:border-emerald-500 hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                        ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30"
+                        : "border-gray-400 dark:border-gray-700 hover:border-emerald-500 hover:bg-gray-50 dark:hover:bg-gray-800/50"
                         }`}
                 >
                     {imagePreview ? (

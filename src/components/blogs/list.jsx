@@ -41,8 +41,8 @@ export default function BlogsList() {
         });
     };
 
-    const handleViewBlog = (id) => {
-        router.push(`/blogs/${id}`);
+    const handleViewBlog = (slug) => {
+        router.push(`/blogs/${slug}`);
     };
 
     return (
@@ -88,7 +88,7 @@ export default function BlogsList() {
                                     className="flex items-center gap-1 cursor-pointer mt-4 text-emerald-500 hover:text-emerald-600 font-medium text-left"
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        handleViewBlog(blog.id);
+                                        handleViewBlog(blog.slug);
                                     }}
                                 >
                                     View Blog

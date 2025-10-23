@@ -154,6 +154,9 @@ export default function DashboardHero() {
                 <AddBlogModal
                     onClose={() => {
                         setAddModalOpen(false);
+                    }}
+                    onSave={() => {
+                        setAddModalOpen(false);
                         fetchBlogs();
                     }}
                 />
@@ -163,6 +166,9 @@ export default function DashboardHero() {
                 <EditBlogModal
                     blog={selectedBlog}
                     onClose={() => {
+                        setEditModalOpen(false);
+                    }}
+                    onSave={() => {
                         setEditModalOpen(false);
                         fetchBlogs();
                     }}
@@ -174,6 +180,9 @@ export default function DashboardHero() {
                     blog={selectedBlog}
                     onClose={() => {
                         setDeleteModalOpen(false);
+                    }}
+                    onSave={() => {
+                        setDeleteModalOpen(false);
                         fetchBlogs();
                     }}
                 />
@@ -183,6 +192,10 @@ export default function DashboardHero() {
                 <ViewBlogModal
                     blog={selectedBlog}
                     onClose={() => setViewModalOpen(false)}
+                    onSave={() => {
+                        setViewModalOpen(false);
+                        fetchBlogs();
+                    }}
                 />
             )}
         </div>

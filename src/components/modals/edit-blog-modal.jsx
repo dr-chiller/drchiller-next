@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Upload } from "lucide-react";
 
-export default function EditBlogModal({ blog, onClose }) {
+export default function EditBlogModal({ blog, onClose, onSave }) {
     const [title, setTitle] = useState(blog.title);
     const [content, setContent] = useState(blog.content);
     const [currentImageUrl, setCurrentImageUrl] = useState(blog.image_url || "");
@@ -40,7 +40,6 @@ export default function EditBlogModal({ blog, onClose }) {
 
             if (newImageFile) {
                 if (!currentImagePath) {
-                    // No old image exists, create a new path
                     imagePath = `${blog.id}_${newImageFile.name}`;
                 } else {
                     // Delete old image first
@@ -79,7 +78,7 @@ export default function EditBlogModal({ blog, onClose }) {
             if (updateError) throw updateError;
 
             console.log("✅ Blog updated:", updatedData);
-            onClose();
+            onSave();
         } catch (err) {
             console.error("❌ Update failed:", err.message);
             setError(err.message);

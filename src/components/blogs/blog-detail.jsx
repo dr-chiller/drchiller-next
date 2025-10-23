@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
 
 export default function BlogDetail() {
-    const { id } = useParams();
+    const { slug } = useParams();
     const router = useRouter();
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -17,7 +17,7 @@ export default function BlogDetail() {
             const { data, error } = await supabase
                 .from("blogs")
                 .select("*")
-                .eq("id", id)
+                .eq("slug", slug)
                 .single();
 
             if (error) {
@@ -28,8 +28,8 @@ export default function BlogDetail() {
             setLoading(false);
         };
 
-        if (id) fetchBlog();
-    }, [id]);
+        if (slug) fetchBlog();
+    }, [slug]);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -66,34 +66,31 @@ export default function BlogDetail() {
 
     return (
         <section className="py-12 px-6 sm:px-12 bg-white dark:bg-black min-h-screen transition-colors duration-500">
-            <div className="max-w-7xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            <div className="max-w-4xl mx-auto">
+                {/* Title and Date */}
+                <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3 text-center">
                     {blog.title}
                 </h1>
-                <p className="text-gray-500 dark:text-gray-400 mb-6">
+                <p className="text-center text-gray-500 dark:text-gray-400 mb-8">
                     {formatDate(blog.created_at)}
                 </p>
 
-                {blog.image_url ? (
-                    <div className="overflow-hidden">
-                        <div className="float-left w-full sm:w-1/3 mr-6 mb-4 relative h-48 sm:h-64 lg:h-80">
-                            <Image
-                                src={blog.image_url}
-                                alt={blog.title}
-                                fill
-                                className="object-cover rounded-lg"
-                            />
-                        </div>
-                        <div className="text-gray-700 dark:text-gray-300 whitespace-pre-line">
-                            {blog.content}
-                        </div>
-                        <div className="clear-both"></div>
-                    </div>
-                ) : (
-                    <div className="text-gray-700 dark:text-gray-300 whitespace-pre-line">
-                        {blog.content}
+                {/* Blog Image */}
+                {blog.image_url && (
+                    <div className="relative max-w-3xl mx-auto h-80 sm:h-96 mb-10 rounded-lg overflow-hidden shadow-lg">
+                        <Image
+                            src={blog.image_url}
+                            alt={blog.title}
+                            fill
+                            className="object-cover"
+                        />
                     </div>
                 )}
+
+                {/* Blog Content */}
+                <div className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed text-lg">
+                    {blog.content}
+                </div>
             </div>
         </section>
     );

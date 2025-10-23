@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
-export default function DeleteBlogModal({ blog, onClose }) {
+export default function DeleteBlogModal({ blog, onClose, onSave }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -12,7 +12,6 @@ export default function DeleteBlogModal({ blog, onClose }) {
         setError(null);
 
         try {
-            // 1️⃣ Delete associated image if exists
             if (blog.image_path) {
                 const { error: removeError } = await supabase.storage
                     .from("blog-images")
@@ -21,16 +20,15 @@ export default function DeleteBlogModal({ blog, onClose }) {
                 if (removeError) console.warn("⚠️ Failed to delete image:", removeError.message);
             }
 
-            // 2️⃣ Delete blog from database
             const { error: deleteError } = await supabase
                 .from("blogs")
                 .delete()
-                .eq("id", Number(blog.id)); // ensure bigint match
+                .eq("id", Number(blog.id));
 
             if (deleteError) throw deleteError;
 
             console.log("✅ Blog deleted successfully!");
-            onClose();
+            onSave();
         } catch (err) {
             console.error("❌ Delete failed:", err.message);
             setError(err.message);

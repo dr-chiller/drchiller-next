@@ -32,7 +32,7 @@ export default function HomeRentals() {
                     </p>
 
                     <Link
-                        href="/services/rentals"
+                        href="/services/ac-chiller-genset-rentals"
                         className="inline-block px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-md shadow-md transition"
                     >
                         Know More

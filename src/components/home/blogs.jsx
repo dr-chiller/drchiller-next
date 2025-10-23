@@ -95,7 +95,7 @@ export default function HomeBlogs() {
 
                                 <div className="mt-auto pt-4">
                                     <Link
-                                        href={`/blogs/${blog.id}`}
+                                        href={`/blogs/${blog.slug}`}
                                         className="flex items-center gap-1 text-emerald-500 hover:text-emerald-600 font-medium transition-colors"
                                     >
                                         Read More

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-export default function ViewBlogModal({ blog, onClose }) {
+export default function ViewBlogModal({ blog, onClose, onSave }) {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
             <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl max-w-5xl w-full mx-4 flex flex-col md:flex-row overflow-hidden">
