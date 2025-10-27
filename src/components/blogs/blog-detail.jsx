@@ -1,36 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-export default function BlogDetail() {
-    const { slug } = useParams();
+export default function BlogDetail({ blog }) {
     const router = useRouter();
-    const [blog, setBlog] = useState(null);
-    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchBlog = async () => {
-            setLoading(true);
-            const { data, error } = await supabase
-                .from("blogs")
-                .select("*")
-                .eq("slug", slug)
-                .single();
-
-            if (error) {
-                console.error("Error fetching blog:", error.message);
-            } else {
-                setBlog(data);
-            }
-            setLoading(false);
-        };
-
-        if (slug) fetchBlog();
-    }, [slug]);
-
+    // Format date
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleString("en-US", {
@@ -42,20 +18,12 @@ export default function BlogDetail() {
         });
     };
 
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center h-screen text-gray-500 dark:text-gray-400">
-                Loading blog...
-            </div>
-        );
-    }
-
     if (!blog) {
         return (
             <div className="flex flex-col justify-center items-center h-screen text-gray-500 dark:text-gray-400">
                 <p>Blog not found.</p>
                 <button
-                    className="mt-4 text-blue-500 hover:text-blue-600"
+                    className="mt-4 text-emerald-500 hover:text-emerald-600"
                     onClick={() => router.push("/blogs")}
                 >
                     Back to Blogs
@@ -75,7 +43,7 @@ export default function BlogDetail() {
                     {formatDate(blog.created_at)}
                 </p>
 
-                {/* Blog Image */}
+                {/* Featured Image */}
                 {blog.image_url && (
                     <div className="relative max-w-3xl mx-auto h-80 sm:h-96 mb-10 rounded-lg overflow-hidden shadow-lg">
                         <Image
