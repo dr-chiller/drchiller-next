@@ -45,6 +45,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-site-verification" content="0HV39_CtxMC8EHOmv2EiFIIJAOGcZkZLZPP9DLug3ws" />
+      </head>
       <body className={`${montserrat.variable} antialiased`}>
         <Navbar />
         <ClientWrapper />
@@ -93,7 +96,6 @@ export default function RootLayout({ children }) {
           }}
         />
       </body>
-      <meta name="google-site-verification" content="0HV39_CtxMC8EHOmv2EiFIIJAOGcZkZLZPP9DLug3ws" />
     </html>
   );
 }
