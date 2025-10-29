@@ -93,6 +93,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </body>
+      <meta name="google-site-verification" content="0HV39_CtxMC8EHOmv2EiFIIJAOGcZkZLZPP9DLug3ws" />
     </html>
   );
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image";
+import DOMPurify from "dompurify";
 
 export default function ViewBlogModal({ blog, onClose, onSave }) {
     return (
@@ -30,9 +31,13 @@ export default function ViewBlogModal({ blog, onClose, onSave }) {
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
                         {new Date(blog.created_at).toLocaleString()}
                     </p>
-                    <div className="text-gray-700 dark:text-gray-300 overflow-y-auto max-h-[60vh] pr-2">
-                        {blog.content}
-                    </div>
+                    <div
+                        className="text-gray-700 dark:text-gray-300 overflow-y-auto max-h-[60vh] pr-2 prose dark:prose-invert max-w-none"
+                        dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(blog.content),
+                        }}
+                    ></div>
+
 
                     <div className="mt-6 flex justify-end">
                         <button

@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import DOMPurify from "dompurify";
 
 export default function HomeBlogs() {
     const [blogs, setBlogs] = useState([]);
@@ -87,11 +88,42 @@ export default function HomeBlogs() {
                                 <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">
                                     {formatDate(blog.created_at)}
                                 </p>
-                                <p className="text-gray-600 dark:text-gray-300 flex-1">
-                                    {blog.content.length > 100
-                                        ? blog.content.slice(0, 100) + "..."
-                                        : blog.content}
-                                </p>
+                                <p
+                                    className="text-gray-600 dark:text-gray-300 prose dark:prose-invert flex-1"
+                                    dangerouslySetInnerHTML={{
+                                        __html: (() => {
+                                            const cleanHTML = DOMPurify.sanitize(blog.content);
+
+                                            const tempDiv = document.createElement("div");
+                                            tempDiv.innerHTML = cleanHTML;
+
+                                            let truncatedHTML = "";
+                                            let charCount = 0;
+
+                                            function traverseNodes(node) {
+                                                for (const child of node.childNodes) {
+                                                    if (charCount >= 100) break;
+                                                    if (child.nodeType === Node.TEXT_NODE) {
+                                                        const remaining = 100 - charCount;
+                                                        const text = child.textContent.slice(0, remaining);
+                                                        truncatedHTML += text;
+                                                        charCount += text.length;
+                                                    } else if (child.nodeType === Node.ELEMENT_NODE) {
+                                                        truncatedHTML += `<${child.nodeName.toLowerCase()}>`;
+                                                        traverseNodes(child);
+                                                        truncatedHTML += `</${child.nodeName.toLowerCase()}>`;
+                                                    }
+                                                }
+                                            }
+
+                                            traverseNodes(tempDiv);
+
+                                            if (charCount >= 100) truncatedHTML += "...";
+
+                                            return DOMPurify.sanitize(truncatedHTML);
+                                        })(),
+                                    }}
+                                ></p>
 
                                 <div className="mt-auto pt-4">
                                     <Link

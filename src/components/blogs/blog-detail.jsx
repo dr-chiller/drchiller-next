@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import DOMPurify from "dompurify";
 
 export default function BlogDetail({ blog }) {
     const router = useRouter();
@@ -56,9 +57,12 @@ export default function BlogDetail({ blog }) {
                 )}
 
                 {/* Blog Content */}
-                <div className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed text-lg">
-                    {blog.content}
-                </div>
+                <div
+                    className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed text-lg"
+                    dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(blog.content),
+                    }}
+                ></div>
             </div>
         </section>
     );

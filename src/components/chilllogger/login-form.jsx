@@ -13,7 +13,7 @@ export default function LoginForm() {
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
-    const LOGIN_ROUTE = process.env.NEXT_PUBLIC_LOGIN_ROUTE;
+    const B_ROUTE = process.env.NEXT_PUBLIC_B_ROUTE;
 
     const inputClasses =
         "w-full px-4 py-2 mt-1 border rounded-md bg-white dark:bg-black dark:text-gray-100 border-gray-300 dark:border-gray-700 focus:ring-2 hover:border-emerald-500 focus:ring-emerald-500 focus:outline-none";

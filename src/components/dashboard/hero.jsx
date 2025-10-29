@@ -3,22 +3,24 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import AddBlogModal from "@/components/modals/add-blog-modal";
-import EditBlogModal from "@/components/modals/edit-blog-modal";
 import DeleteBlogModal from "@/components/modals/delete-blog-modal";
 import ViewBlogModal from "../modals/view-blog-modal";
 import Image from "next/image";
 import { FaEdit, FaEye, FaPlus, FaSignOutAlt, FaTrash } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import Pagination from "@/components/pagination";
+import Link from "next/link";
+import DOMPurify from "dompurify";
 
 export default function DashboardHero() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedBlog, setSelectedBlog] = useState(null);
     const [isAddModalOpen, setAddModalOpen] = useState(false);
-    const [isEditModalOpen, setEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [isViewModalOpen, setViewModalOpen] = useState(false);
+
+    const B_ROUTE = process.env.NEXT_PUBLIC_B_ROUTE;
 
     const [currentPage, setCurrentPage] = useState(1);
     const blogsPerPage = 12;
@@ -109,9 +111,12 @@ export default function DashboardHero() {
                                     {blog.title}
                                 </h3>
 
-                                <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 flex-grow">
-                                    {blog.content}
-                                </p>
+                                <div
+                                    className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 flex-grow prose dark:prose-invert max-w-none"
+                                    dangerouslySetInnerHTML={{
+                                        __html: DOMPurify.sanitize(blog.content),
+                                    }}
+                                ></div>
 
                                 <div className="flex justify-end gap-1 mt-4">
                                     <button
@@ -125,16 +130,13 @@ export default function DashboardHero() {
                                         View
                                     </button>
 
-                                    <button
-                                        onClick={() => {
-                                            setSelectedBlog(blog);
-                                            setEditModalOpen(true);
-                                        }}
+                                    <Link
+                                        href={`${B_ROUTE}edit/${blog.id}`}
                                         className="cursor-pointer flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-blue-500 text-white hover:bg-blue-600 transition"
                                     >
                                         <FaEdit className="text-sm" />
                                         Edit
-                                    </button>
+                                    </Link>
 
                                     <button
                                         onClick={() => {
@@ -166,17 +168,6 @@ export default function DashboardHero() {
                     onClose={() => setAddModalOpen(false)}
                     onSave={() => {
                         setAddModalOpen(false);
-                        fetchBlogs();
-                    }}
-                />
-            )}
-
-            {isEditModalOpen && selectedBlog && (
-                <EditBlogModal
-                    blog={selectedBlog}
-                    onClose={() => setEditModalOpen(false)}
-                    onSave={() => {
-                        setEditModalOpen(false);
                         fetchBlogs();
                     }}
                 />
