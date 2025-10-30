@@ -58,7 +58,7 @@ export default function LoginForm() {
             } else {
                 setSuccess("Login successful!");
                 setFormData({ email: "", password: "" });
-                router.push(`${LOGIN_ROUTE}`)
+                router.push(`${B_ROUTE}`)
             }
         } catch (err) {
             setError("Something went wrong, please try again later.");
