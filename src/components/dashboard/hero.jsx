@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import AddBlogModal from "@/components/modals/add-blog-modal";
 import DeleteBlogModal from "@/components/modals/delete-blog-modal";
 import ViewBlogModal from "../modals/view-blog-modal";
 import Image from "next/image";
@@ -62,13 +61,13 @@ export default function DashboardHero() {
                     Blogs
                 </h2>
                 <div className="flex gap-1 sm:gap-3">
-                    <button
-                        onClick={() => setAddModalOpen(true)}
+                    <Link
+                        href={`${B_ROUTE}add`}
                         className="flex items-center gap-2 cursor-pointer bg-emerald-500 text-white px-2 md:px-5 py-2 rounded-lg shadow-md hover:bg-emerald-600 transition"
                     >
                         <FaPlus className="text-sm" />
                         Add Blog
-                    </button>
+                    </Link>
                     <button
                         onClick={handleLogout}
                         className="flex items-center gap-2 cursor-pointer bg-red-500 text-white px-2 md:px-5 py-2 rounded-lg shadow-md hover:bg-red-600 transition"
@@ -163,15 +162,6 @@ export default function DashboardHero() {
             )}
 
             {/* Modals */}
-            {isAddModalOpen && (
-                <AddBlogModal
-                    onClose={() => setAddModalOpen(false)}
-                    onSave={() => {
-                        setAddModalOpen(false);
-                        fetchBlogs();
-                    }}
-                />
-            )}
 
             {isDeleteModalOpen && selectedBlog && (
                 <DeleteBlogModal

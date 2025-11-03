@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { Upload } from "lucide-react";
+import { Upload, X } from "lucide-react";
 const Editor = dynamic(() => import("@tinymce/tinymce-react").then(mod => mod.Editor), {
     ssr: false,
 });
@@ -122,7 +122,15 @@ export default function EditBlogAdminPage() {
 
     return (
         <div className="max-w-3xl mx-auto p-6">
-            <h2 className="text-2xl font-semibold mb-4 text-emerald-500">Edit Blog</h2>
+            <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-3 mb-5">
+                <h2 className="text-2xl font-semibold text-emerald-500">Edit Blog</h2>
+                <button
+                    onClick={() => router.back()}
+                    className="cursor-pointer text-gray-500 hover:text-red-500 transition"
+                >
+                    <X size={22} />
+                </button>
+            </div>
 
             {error && <p className="text-red-500 mb-3">{error}</p>}
 
