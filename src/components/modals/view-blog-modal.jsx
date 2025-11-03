@@ -32,10 +32,8 @@ export default function ViewBlogModal({ blog, onClose, onSave }) {
                         {new Date(blog.created_at).toLocaleString()}
                     </p>
                     <div
-                        className="text-gray-700 dark:text-gray-300 overflow-y-auto max-h-[60vh] pr-2 prose dark:prose-invert max-w-none"
-                        dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(blog.content),
-                        }}
+                        className="blog-content text-gray-700 dark:text-gray-300 overflow-y-auto max-h-[60vh] pr-2 prose dark:prose-invert max-w-none"
+                        dangerouslySetInnerHTML={{ __html: blog.content }}
                     ></div>
 
 

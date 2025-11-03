@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import dynamic from "next/dynamic";
 import { Upload, X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import tinymceConfig from "../../../tinymce.config";
 const Editor = dynamic(() => import("@tinymce/tinymce-react").then(mod => mod.Editor), {
     ssr: false,
 });
@@ -155,14 +156,7 @@ export default function AddBlogAdminPage() {
                     apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
                     value={content}
                     onEditorChange={(newContent) => setContent(newContent)}
-                    init={{
-                        height: 400,
-                        menubar: false,
-                        plugins: "link image code lists table preview",
-                        toolbar:
-                            "undo redo | styles | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code preview",
-                        content_style: "body { font-family:Inter, sans-serif; font-size:14px }",
-                    }}
+                    init={tinymceConfig}
                 />
 
                 {/* Upload Box */}

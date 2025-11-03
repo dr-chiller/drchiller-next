@@ -5,6 +5,7 @@ module.exports = {
         './pages/**/*.{js,ts,jsx,tsx}',
         './components/**/*.{js,ts,jsx,tsx}',
     ],
+    safelist: ['prose', 'prose-lg', 'prose-xl', 'dark:prose-invert'],
     theme: {
         extend: {
             fontFamily: {
@@ -12,5 +13,5 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    plugins: [require('@tailwindcss/typography')],
 };

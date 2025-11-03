@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import DOMPurify from "dompurify";
 
 export default function BlogDetail({ blog }) {
     const router = useRouter();
 
-    // Format date
+    // Format date nicely
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleString("en-US", {
@@ -33,10 +32,11 @@ export default function BlogDetail({ blog }) {
         );
     }
 
+
     return (
         <section className="py-12 px-6 sm:px-12 bg-white dark:bg-black min-h-screen transition-colors duration-500">
             <div className="max-w-4xl mx-auto">
-                {/* Title and Date */}
+                {/* Title & Date */}
                 <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3 text-center">
                     {blog.title}
                 </h1>
@@ -56,13 +56,12 @@ export default function BlogDetail({ blog }) {
                     </div>
                 )}
 
-                {/* Blog Content */}
+                {/* ✅ Blog HTML Content */}
                 <div
-                    className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 whitespace-pre-line leading-relaxed text-lg"
-                    dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(blog.content),
-                    }}
-                ></div>
+                    className="blog-content"
+                    dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
+
             </div>
         </section>
     );
