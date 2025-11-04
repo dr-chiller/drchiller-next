@@ -1,3 +1,9 @@
+export const metadata = {
+    title: "Heat Exchangers & Cooling Towers | CTS, UAE",
+    description:
+        "CTS heat exchangers and cooling towers built for performance and efficiency. Reliable industrial cooling solutions trusted across the UAE.",
+};
+
 import PageHeader from "@/components/page-header";
 import HeatExchangersHero from "@/components/products/heat-exchangers/hero";
 import HeatExchangersSection from "@/components/products/heat-exchangers/section";

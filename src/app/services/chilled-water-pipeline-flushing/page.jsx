@@ -1,3 +1,9 @@
+export const metadata = {
+    title: "Chilled Water Pipeline Flushing | CTS UAE Experts",
+    description:
+        "CTS offers professional chilled water pipeline flushing services. Improve cooling system efficiency and prevent blockages across the UAE.",
+};
+
 import PageHeader from "@/components/page-header";
 import ChilledWaterPipelineHero from "@/components/services/chilled-water-pipeline/hero";
 import ChilledWaterPipelineSections from "@/components/services/chilled-water-pipeline/section";

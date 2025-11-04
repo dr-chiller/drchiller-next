@@ -1,3 +1,9 @@
+export const metadata = {
+    title: "AC Units & Air Curtains | CTS Cooling Solutions UAE",
+    description:
+        "Find CTS's range of AC units and air curtains for efficient cooling and airflow. Trusted solutions for commercial and industrial spaces across the UAE.",
+};
+
 import PageHeader from "@/components/page-header";
 import ACUnitsHero from "@/components/products/ac-units/hero";
 import ACUnitsSections from "@/components/products/ac-units/section";

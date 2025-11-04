@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "CTS - Chiller Maintenance Company | HVAC Experts in UAE",
+  description:
+    "CTS - a trusted chiller maintenance company in UAE, offering expert HVAC, AC, and chiller services with reliable solutions for every cooling need.",
+};
+
 import HomeBlogs from "@/components/home/blogs";
 import dynamic from "next/dynamic";
 
