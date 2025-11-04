@@ -29,7 +29,7 @@ export default function PageHeader({ title, backgroundImage}) {
 
             {/* Title */}
             <div className="relative z-10 px-4">
-                <h1 className="text-3xl sm:text-5xl font-bold drop-shadow-lg">{title}</h1>
+                <h2 className="text-3xl sm:text-5xl font-bold drop-shadow-lg">{title}</h2>
             </div>
         </section>
     );

@@ -23,11 +23,17 @@ const ContactUsSection = () => {
                         </div>
                         <div>
                             <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Location</h4>
-                            <p className="text-gray-600 dark:text-gray-400">
+                            <a
+                                href="https://maps.app.goo.gl/bpqPc2NjBGFzEAqD8"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-600 dark:text-gray-400 hover:text-emerald-500 block"
+                            >
                                 CTS - Chiller Technical Services LLC. <br />
                                 Industrial Area # 02. <br />
                                 Ajman, UAE.
-                            </p>
+                            </a>
+
                         </div>
                     </div>
 

@@ -23,7 +23,7 @@ const AMCHero = () => {
                         Our comprehensive AMC programs cover preventive and corrective
                         maintenance for all types of AC units, chillers and cold room systems.
                         Stay focused on your business while we handle servicing, safety
-                        checks, and emergency response – ensuring your systems run efficiently
+                        checks, and emergency response - ensuring your systems run efficiently
                         all year round.
                     </p>
                 </div>

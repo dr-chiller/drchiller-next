@@ -2,6 +2,8 @@ export const metadata = {
     title: "CTS AMC Services | Annual Chiller Maintenance UAE",
     description:
         "Choose CTS AMC for reliable chiller maintenance and servicing. Keep your cooling systems running efficiently all year across the UAE.",
+    alternates: { canonical: `/services/amc` }
+
 };
 
 import PageHeader from "@/components/page-header";

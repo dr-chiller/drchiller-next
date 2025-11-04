@@ -2,6 +2,8 @@ export const metadata = {
     title: "AC, Chiller & Cold Room Maintenance | CTS, UAE",
     description:
         "CTS provides expert AC, chiller, and cold room maintenance across the UAE. Ensure reliable cooling performance with our trusted technical specialists.",
+    alternates: { canonical: `/services/ac-chiller-coldroom-maintenance` }
+
 };
 
 import PageHeader from "@/components/page-header";

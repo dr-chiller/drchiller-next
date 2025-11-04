@@ -2,6 +2,8 @@ export const metadata = {
     title: "Coil Manufacturing & Replacement | CTS, UAE",
     description:
         "Get custom coil manufacturing and replacement services from CTS. Durable coils designed for superior chiller and HVAC performance across the UAE.",
+    alternates: { canonical: `/services/coil-manufacturing-replacements` }
+
 };
 
 import PageHeader from "@/components/page-header";

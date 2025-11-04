@@ -2,6 +2,8 @@ export const metadata = {
     title: "Water Chillers, Coolers & Heat Pumps | CTS, UAE",
     description:
         "Explore CTS water chillers, coolers, and heat pumps designed for efficient industrial and commercial cooling applications across the UAE.",
+    alternates: { canonical: `/products/water-chillers-coolers-heat-pumps` }
+
 };
 
 import PageHeader from "@/components/page-header";

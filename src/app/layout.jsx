@@ -13,23 +13,20 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "CTS - Chiller Technical Services L.L.C | HVAC & Chiller Experts in UAE",
-  description:
-    "CTS - Chiller Technical Services L.L.C offers expert HVAC, AC maintenance, and chiller services in UAE. Trusted technical solutions for commercial and residential cooling.",
   keywords:
     "chiller, cold room, water chiller, water cooler, shell heat exchanger,heat exchanger, heat pump, PHE, cooling tower, ice block machines, air curtain, AC rentals, AMC of chiller, AMC of AC, compressor overhauling, chiller supplies, chiller manufacturer, cold room repair, tank cooling system, chiller services UAE, chiller services Dubai, CTS, Chiller technical solutions, drchiller",
   authors: [{ name: "CTS - Chiller Technical Services L.L.C" }],
   robots: "index, follow",
   icons: {
-    icon: "https://drchiller.com/logo.png",
+    icon: "https://www.drchiller.com/logo.png",
   },
   openGraph: {
     title: "CTS - Chiller Technical Services L.L.C | HVAC & Chiller Experts in UAE",
     description:
       "Expert solutions in water chillers, cold rooms, heat exchangers, AC units, maintenance services and renting services in the UAE.",
-    url: "https://drchiller.com/",
+    url: "https://www.drchiller.com/",
     siteName: "CTS - Chiller Technical Services L.L.C",
-    images: ["https://drchiller.com/logo.png"],
+    images: ["https://www.drchiller.com/logo.png"],
     type: "website",
   },
   twitter: {
@@ -37,9 +34,9 @@ export const metadata = {
     title: "CTS - Chiller Technical Services L.L.C | HVAC & Chiller Experts in UAE",
     description:
       "Expert solutions in water chillers, cold rooms, heat exchangers, AC units, maintenance services and renting services in the UAE.",
-    images: ["https://drchiller.com/logo.png"],
+    images: ["https://www.drchiller.com/logo.png"],
   },
-  metadataBase: new URL("https://drchiller.com"),
+  metadataBase: new URL("https://www.drchiller.com"),
 };
 
 export default function RootLayout({ children }) {
@@ -79,10 +76,10 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               name: "CTS - Chiller Technical Services L.L.C",
-              image: "https://drchiller.com/logo.png",
-              logo: "https://drchiller.com/logo.png",
-              "@id": "https://drchiller.com",
-              url: "https://drchiller.com",
+              image: "https://www.drchiller.com/logo.png",
+              logo: "https://www.drchiller.com/logo.png",
+              "@id": "https://www.drchiller.com",
+              url: "https://www.drchiller.com",
               telephone: "+97167434537",
               address: {
                 "@type": "PostalAddress",
@@ -91,7 +88,7 @@ export default function RootLayout({ children }) {
                 addressRegion: "Ajman",
                 addressCountry: "UAE",
               },
-              openingHours: "Mo-Sa 09:00-18:00",
+              openingHours: "Mo-Sa 08:00-17:30",
             }),
           }}
         />

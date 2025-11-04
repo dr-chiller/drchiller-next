@@ -105,13 +105,21 @@ const Footer = () => {
                         <li className="flex gap-2">
                             <MdLocationOn size={20} className="text-emerald-500" />
                             <span className="font-semibold">Address:</span>
-                            <span>
-                                CTS - Chiller Technical Services L.L.C.
-                                <br />
-                                Industrial Area # 02.
-                                <br />
-                                Ajman, UAE.
-                            </span>
+                            <a
+                                href="https://maps.app.goo.gl/bpqPc2NjBGFzEAqD8"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-emerald-500 relative group"
+                            >
+                                <span>
+                                    CTS - Chiller Technical Services L.L.C.
+                                    <br />
+                                    Industrial Area # 02.
+                                    <br />
+                                    Ajman, UAE.
+                                </span>
+                                <span className="absolute left-0 -bottom-0.5 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                            </a>
                         </li>
                     </ul>
                 </div>

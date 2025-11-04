@@ -1,12 +1,12 @@
 import { supabaseS } from "@/lib/supabaseServer";
 
 export default async function sitemap() {
-    const baseUrl = "https://drchiller.com";
+    const baseUrl = "https://www.drchiller.com";
 
     const staticPages = [
         "",
-        "about",
-        "contact",
+        "about-us",
+        "contact-us",
         "blogs",
         "products",
         "services",

@@ -2,6 +2,8 @@ export const metadata = {
     title: "Cold Rooms & Ice Block Machines | CTS, UAE",
     description:
         "Explore CTS cold rooms and ice block machines designed for reliable cooling and storage. Trusted industrial refrigeration solutions across the UAE.",
+    alternates: { canonical: `/products/cold-rooms-ice-block-machines` }
+
 };
 import PageHeader from "@/components/page-header";
 import ColdRoomsHero from "@/components/products/cold-rooms/hero";

@@ -2,6 +2,8 @@ export const metadata = {
     title: "Compressor Overhauling in UAE |Chiller Technical Services",
     description:
         "Restore performance with professional compressor overhauling by CTS, UAE. Our expert technicians ensure reliable operation & extended compressor lifespan.",
+    alternates: { canonical: `/services/overhauling-winding` }
+
 };
 
 import PageHeader from "@/components/page-header";
