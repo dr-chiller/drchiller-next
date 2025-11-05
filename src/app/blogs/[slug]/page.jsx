@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
             images: [blog?.image_url || "/default-og.png"],
         },
         alternates: {
-            canonical: `/blog/${slug}`,
+            canonical: `/blogs/${slug}`,
         },
     };
 }
