@@ -14,9 +14,9 @@ const OverhaulingHero = () => {
                         Compressor Overhauling & Rewinding
                     </p>
 
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-200">
                         Precision Repair • Reconditioning • Long Life
-                    </h1>
+                    </h2>
 
                     <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
                         We offer complete overhauling and rewinding services for compressors, fan motors and blower motors.

@@ -15,9 +15,9 @@ const AMCHero = () => {
                         Annual Maintenance Contracts (AMC)
                     </p>
 
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-200">
                         Hassle-Free Servicing • 24/7 Support • Guaranteed Uptime
-                    </h1>
+                    </h2>
 
                     <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
                         Our comprehensive AMC programs cover preventive and corrective

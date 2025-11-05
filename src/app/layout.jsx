@@ -13,6 +13,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
+  title: "CTS - Chiller Maintenance Company | HVAC Experts in UAE",
+  description:
+    "CTS - a trusted chiller maintenance company in UAE, offering expert HVAC, AC, and chiller services with reliable solutions for every cooling need.",
   keywords:
     "chiller, cold room, water chiller, water cooler, shell heat exchanger,heat exchanger, heat pump, PHE, cooling tower, ice block machines, air curtain, AC rentals, AMC of chiller, AMC of AC, compressor overhauling, chiller supplies, chiller manufacturer, cold room repair, tank cooling system, chiller services UAE, chiller services Dubai, CTS, Chiller technical solutions, drchiller",
   authors: [{ name: "CTS - Chiller Technical Services L.L.C" }],

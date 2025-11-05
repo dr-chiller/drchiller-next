@@ -15,9 +15,9 @@ export default function ChilledWaterPipelineHero() {
                         Chilled Water Pipeline & Flushing Services
                     </p>
 
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-200">
                         Design • Installation • Maintenance
-                    </h1>
+                    </h2>
 
                     <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
                         We specialize in MS/SS/PPR chilled water pipeline projects, including insulation,
