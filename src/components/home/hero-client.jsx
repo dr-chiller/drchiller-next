@@ -60,9 +60,9 @@ export default function HomeHeroClient({ slides }) {
                                 alt="Dr.Chiller Logo"
                             />
                             <div>
-                                <h4 className="text-lg sm:text-xl md:text-2xl font-bold">
+                                <p className="text-lg sm:text-xl md:text-2xl font-bold">
                                     CTS - Chiller Technical Services L.L.C
-                                </h4>
+                                </p>
                                 <span className="text-xs sm:text-sm italic md:text-md font-semibold text-emerald-400 uppercase">
                                     Skill to Chill
                                 </span>
@@ -70,9 +70,9 @@ export default function HomeHeroClient({ slides }) {
                         </div>
 
                         <div className="pb-16 md:pb-10">
-                            <h1 className="text-2xl sm:text-3xl md:text-5xl text-emerald-500 font-bold mb-3">
+                            <p className="text-2xl sm:text-3xl md:text-5xl text-emerald-500 font-bold mb-3">
                                 {slides[currentIndex].header}
-                            </h1>
+                            </p>
                             <p className="text-base sm:text-lg md:text-xl mb-6 max-w-2xl">
                                 {slides[currentIndex].description}
                             </p>

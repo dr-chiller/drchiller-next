@@ -84,9 +84,9 @@ export default function HomeChooseClient({ reasons }) {
             ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
                         }`}
                 >
-                    <h2 className="text-3xl sm:text-4xl font-bold text-emerald-600 dark:text-emerald-400 mb-6">
-                        Why Choose Us
-                    </h2>
+                    <h1 className="text-3xl sm:text-4xl font-bold text-emerald-600 dark:text-emerald-400 mb-6">
+                        Chiller Maintenance Company in UAE
+                    </h1>
                     <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                         At{" "}
                         <span className="font-semibold text-emerald-700 dark:text-emerald-300">
