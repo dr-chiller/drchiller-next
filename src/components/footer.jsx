@@ -41,6 +41,7 @@ const Footer = () => {
                             { name: "A/C Units & Air Curtains", link: "/products/ac-units-air-curtains" },
                             { name: "Water Chillers", link: "/products/water-chillers" },
                             { name: "Industrial Chillers", link: "/products/industrial-chillers" },
+                            { name: "Cold Room", link: "/products/cold-room" },
                             { name: "Heat Exchanger", link: "/products/heat-exchanger" },
                         ].map((item, i) => (
                             <li key={i}>

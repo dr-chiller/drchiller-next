@@ -3,7 +3,7 @@ import ServiceProcess from "../main/sections/service";
 import AreasWeServe from "../main/sections/areas";
 import BenefitsSection from "../main/sections/benefits";
 
-export default function WaterChillerSections() {
+export default function ColdRoomSections() {
     return (
         <section className="py-16 bg-white dark:bg-black">
             <div className="max-w-7xl mx-auto px-4">
