@@ -39,6 +39,9 @@ const Footer = () => {
                             { name: "Cold Rooms & Ice Block Machines", link: "/products/cold-rooms-ice-block-machines" },
                             { name: "Heat Exchangers & Cooling Towers", link: "/products/heat-exchangers-cooling-towers" },
                             { name: "A/C Units & Air Curtains", link: "/products/ac-units-air-curtains" },
+                            { name: "Water Chillers", link: "/products/water-chillers" },
+                            { name: "Industrial Chillers", link: "/products/industrial-chillers" },
+                            { name: "Heat Exchanger", link: "/products/heat-exchanger" },
                         ].map((item, i) => (
                             <li key={i}>
                                 <Link href={item.link} className="hover:text-emerald-500 relative group">
@@ -61,6 +64,9 @@ const Footer = () => {
                             { name: "Coil Manufacturig & Replacements", link: "/services/coil-manufacturing-replacements" },
                             { name: "Overhauling & Winding", link: "/services/overhauling-winding" },
                             { name: "AMC", link: "/services/amc" },
+                            { name: "A/C Service Dubai", link: "/services/ac-service-dubai" },
+                            { name: "Chiller Repair Maintenance", link: "/services/chiller-repair-maintenance" },
+                            { name: "Industrial Chiller Maintenance", link: "/services/industrial-chiller-maintenance" },
                         ].map((item, i) => (
                             <li key={i}>
                                 <Link href={item.link} className="hover:text-emerald-500 relative group">
