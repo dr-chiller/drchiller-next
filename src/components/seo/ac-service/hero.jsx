@@ -11,6 +11,8 @@ const ACServiceHero = () => {
                         We focus on fast service, accurate diagnosis and long-term solutions that improve cooling efficiency, lower energy use and reduce breakdowns.`}
             image1={amc_1}
             image2={amc_2}
+            alt1="AC Maintenance"
+            alt2="AMC Contract"
         />
 
     );

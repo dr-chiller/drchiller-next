@@ -41,6 +41,7 @@ export default function ACSections() {
                     <ContactSection
                         data={{
                             title: "Contact Us",
+                            description: "For reliable AC service in Dubai, get in touch with our team.",
                             location: "CTS - Chiller Technical Services L.L.C., Industrial Area 02, Ajman, UAE",
                             email: "info@drchiller.com",
                             phones: [

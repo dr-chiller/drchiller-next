@@ -2,11 +2,12 @@ import Link from "next/link";
 
 export default function ContactSection({ data }) {
     return (
-        <section className="py-14 bg-emerald-50 dark:bg-emerald-950">
+        <section className="py-14 bg-emerald-50 dark:bg-emerald-950 border border-emerald-100 dark:border-emerald-900 rounded-xl">
             <div className="max-w-5xl mx-auto px-6">
                 <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200 text-center">{data.title}</h2>
 
                 <div className="space-y-4 text-gray-700 dark:text-gray-300 text-md max-w-xl mx-auto">
+                    <p>{data.description}</p>
 
                     <p><strong>Location:</strong><br />
                         <a

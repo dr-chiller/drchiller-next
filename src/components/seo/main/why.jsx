@@ -13,7 +13,7 @@ export default function WhyChoose({
         <section className="py-16 bg-gray-50 dark:bg-gray-900">
             <div className="max-w-7xl mx-auto px-4">
                 {/* Title */}
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+                <h2 className="text-3xl md:text-4xl text-gray-800 dark:text-gray-200 font-bold mb-6 text-center">
                     {title}{" "}
                     <span className="text-emerald-600 dark:text-emerald-400">
                         {highlight}
@@ -21,12 +21,12 @@ export default function WhyChoose({
                 </h2>
 
                 {/* Subtext */}
-                <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center mb-12">
+                <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center mb-6 sm:mb-12">
                     {description}
                 </p>
 
                 {/* Points Grid */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6">
                     {points.map((item, index) => (
                         <div
                             key={index}
@@ -40,9 +40,11 @@ export default function WhyChoose({
                     ))}
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center mt-12">
-                    {footer}
-                </p>
+                {footer && (
+                    <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center mt-6 sm:mt-12">
+                        {footer}
+                    </p>
+                )}
             </div>
         </section>
     );

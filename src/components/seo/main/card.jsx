@@ -1,6 +1,6 @@
 "use client";
 
-export default function InfoCard({ title, description, bullets = [], footer }) {
+export default function InfoCard({ title, description, sub_desc, bullets = [], footer }) {
     const hasBullets = bullets && bullets.length > 0;
     const hasFooter = footer && footer.trim().length > 0;
 
@@ -19,6 +19,10 @@ export default function InfoCard({ title, description, bullets = [], footer }) {
                 <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-4">
                     {description}
                 </p>
+            )}
+
+            {sub_desc && (
+                <p className="font-semibold pb-2">{sub_desc}</p>
             )}
 
             {hasBullets && (
